@@ -48,6 +48,10 @@ const questions = [
                 name: 'Boost Software License 1.0',
                 value: 'Boost Software',
             },
+            {
+                name: 'None',
+                value: 'None',
+            },
         ]
     },
 ];
@@ -60,9 +64,9 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer
-    .createPromptModule(questions)
+    .prompt(questions)
     .then((answers) => {
-        const markdown = generateMarkedown(answers);
+        const markdown = generateMarkdown(answers);
         writeToFile('README.md', markdown);
     })
     .catch((error) => {
