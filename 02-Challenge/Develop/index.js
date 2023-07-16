@@ -32,9 +32,23 @@ const questions = [
         message: 'List collaborators for the project',
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'license',
-        message: 'Which license was used for this project?'
+        message: 'Which license was used for this project?',
+        choices: [
+            {
+                name: 'MIT License',
+                value: 'MIT',
+            },
+            {
+                name: 'Apache License 2.0',
+                value: 'Apache License',
+            },
+            {
+                name: 'Boost Software License 1.0',
+                value: 'Boost Software',
+            },
+        ]
     },
 ];
 

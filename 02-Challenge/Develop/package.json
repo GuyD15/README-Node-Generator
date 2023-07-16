@@ -1,5 +1,5 @@
 {
-  "name": "README-Generator",
+  "name": "readme-generator",
   "version": "1.0.0",
   "description": "A README generator created form the command line.",
   "main": "index.js",
