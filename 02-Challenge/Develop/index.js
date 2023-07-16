@@ -8,10 +8,22 @@ const generateMarkdown = require('./utils/generateMarkdown');
 const questions = [];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => err ? console.error(err) : console.log('README.md file generated!'));
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer
+    .createPromptModule(questions)
+    .then((answers) => {
+        const markdown = generateMarkedown(answers);
+        writeToFile('README.md', markdown);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+}
 
 // Function call to initialize app
 init();
