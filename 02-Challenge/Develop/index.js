@@ -1,10 +1,13 @@
 // TODO: Include packages needed for this application
+// Importing packages for the application
 
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
+
+// Created questions for the array based on the professional README.md given in pre-course
 const questions = [
     {
         type: 'input',
@@ -54,21 +57,30 @@ const questions = [
             },
         ]
     },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Enter your GitHub username:',
+    },
 ];
 
 // TODO: Create a function to write README file
+// writing a file with the fileName and data parameters. Also adding the error parameter so if the value is null it will log file generated, but if there is an error value it will log an error.
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) => err ? console.error(err) : console.log('README.md file generated!'));
 }
 
 // TODO: Create a function to initialize app
+// prompts for the questions and then are answered, markdown is where the answers are inserted and creates a document for them, which is writing the file 'README.md'. If there's an error in the process that is what the .catch is for, letting us know about it.
 function init() {
     inquirer
     .prompt(questions)
+    // .then is for promises that are kept.
     .then((answers) => {
         const markdown = generateMarkdown(answers);
         writeToFile('README.md', markdown);
     })
+    // .catch is for promises that are not kept and we catch the error.
     .catch((error) => {
         console.error(error);
     });
